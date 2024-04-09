@@ -1,0 +1,47 @@
+Username: COMP214_W24_nic_x
+password: password
+Hostname on campus: oracle1.centennialcollege.ca
+Hostname for off campus connection: 199.212.26.208
+port: 1521
+SID: SQLD
+
+BEGIN
+    FOR r IN (
+        SELECT
+            table_name
+        FROM
+            user_tables
+    ) LOOP
+        BEGIN
+            EXECUTE IMMEDIATE 'DROP TABLE "'
+                              || r.table_name
+                              || '" CASCADE CONSTRAINTS PURGE';
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('Failed to drop table "'
+                                     || r.table_name
+                                     || '": '
+                                     || SQLERRM);
+        END;
+    END LOOP;
+
+    FOR r IN (
+        SELECT
+            sequence_name
+        FROM
+            user_sequences
+    ) LOOP
+        BEGIN
+            EXECUTE IMMEDIATE 'DROP SEQUENCE "'
+                              || r.sequence_name
+                              || '"';
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('Failed to drop sequence "'
+                                     || r.sequence_name
+                                     || '": '
+                                     || SQLERRM);
+        END;
+    END LOOP;
+END;
+/
