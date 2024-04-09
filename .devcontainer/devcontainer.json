@@ -1,0 +1,23 @@
+{
+    "name": "Default Linux Universal",
+    "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.copilot",
+                "vsls-contrib.gitdoc",
+                "CrappyCodeMaker.ccm-plsql-oracle",
+                "EwanDubashinski.plsqllint",
+                "Oracle.oracledevtools",
+                "adpyke.vscode-sql-formatter",
+                "apng.orclapex-autocomplete",
+                "casian.plsql",
+                "mycelo.oracle-plsql",
+                "xyz.plsql-language",
+                "streetsidesoftware.code-spell-checker",
+                "EditorConfig.EditorConfig",
+                "DavidAnson.vscode-markdownlint"
+            ]
+        }
+    }
+}
